@@ -4,6 +4,7 @@ import {ADD_PROJECT} from '../projects.action-types';
 import {addProjectFail, addProjectSuccess} from '../projects.actions';
 import {addProject, ensureIsAngularCliProject, getPackageJson, selectProjectDirectory} from '../projects.service';
 import {ProjectState} from '../projects.state';
+import {generateId} from '../../core/utils.service';
 
 function* add() {
     try {
@@ -11,13 +12,15 @@ function* add() {
 
         const location = yield call(selectProjectDirectory);
 
+        const id = yield call(generateId);
+
         yield call(ensureIsAngularCliProject, location);
 
         const packageJson = yield call(getPackageJson, location);
 
-        yield call(addProject, [...projects, {location, name: packageJson.name}]);
+        yield call(addProject, {...projects, [id]: {id, location, name: packageJson.name}});
 
-        yield put(addProjectSuccess({location, name: packageJson.name}));
+        yield put(addProjectSuccess({id, location, name: packageJson.name}));
     } catch (err) {
         yield put(addProjectFail());
     }
