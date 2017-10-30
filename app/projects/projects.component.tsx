@@ -2,7 +2,6 @@ import * as React from 'react';
 import {ProjectState} from './projects.state';
 import {Grid, Row, Col} from 'react-flexbox-grid/lib/index';
 import {ProjectCardComponent} from './card/project-card.component';
-import {Simulate} from 'react-dom/test-utils';
 
 interface Props {
     projects: ProjectState;
@@ -10,7 +9,7 @@ interface Props {
     fetchProjectList();
 }
 
-export class ProjectComponent extends React.Component<Props, any> {
+export class ProjectsComponent extends React.Component<Props, any> {
 
     constructor(props, context) {
         super(props, context);

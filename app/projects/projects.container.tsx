@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as actions from './projects.actions';
-import {ProjectComponent} from './projects.component';
+import {ProjectsComponent} from './projects.component';
 import {ProjectState} from './projects.state';
 import {FloatingAddButton} from './add/floating-add-button';
 
@@ -17,10 +17,10 @@ interface Actions {
     addProject();
 }
 
-const ProjectContainer: React.StatelessComponent<Props> = (props) => {
+const ProjectsContainer: React.StatelessComponent<Props> = (props) => {
     return (
         <div>
-            <ProjectComponent projects={props.projects} fetchProjectList={props.actions.fetchProjects}/>
+            <ProjectsComponent projects={props.projects} fetchProjectList={props.actions.fetchProjects}/>
 
             <FloatingAddButton addProject={props.actions.addProject}/>
         </div>
@@ -42,4 +42,4 @@ function mapDispatchToProps(dispatch) {
 export default connect<{}, {}, any>(
     mapStateToProps,
     mapDispatchToProps
-)(ProjectContainer);
+)(ProjectsContainer);
