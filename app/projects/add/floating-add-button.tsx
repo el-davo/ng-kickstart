@@ -9,7 +9,7 @@ const style = {
 };
 
 interface Props {
-    showAddProjectModal();
+    addProject();
 }
 
 export class FloatingAddButton extends React.Component<Props, any> {
@@ -20,7 +20,7 @@ export class FloatingAddButton extends React.Component<Props, any> {
 
     render() {
         return (
-            <FloatingActionButton style={style} onClick={() => this.props.showAddProjectModal()}>
+            <FloatingActionButton style={style} onClick={() => this.props.addProject()}>
                 <ContentAdd/>
             </FloatingActionButton>
         );

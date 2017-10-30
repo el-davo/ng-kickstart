@@ -5,7 +5,6 @@ import * as actions from './projects.actions';
 import {ProjectComponent} from './projects.component';
 import {ProjectState} from './projects.state';
 import {FloatingAddButton} from './add/floating-add-button';
-import {AddProjectModalComponent} from './add/add-project-modal.component';
 
 interface Props {
     projects: ProjectState;
@@ -15,13 +14,7 @@ interface Props {
 interface Actions {
     fetchProjects();
 
-    showAddProjectModal();
-
-    hideAddProjectModal();
-
     addProject();
-
-    handleUpdateFormLocation(value: string);
 }
 
 const ProjectContainer: React.StatelessComponent<Props> = (props) => {
@@ -29,12 +22,7 @@ const ProjectContainer: React.StatelessComponent<Props> = (props) => {
         <div>
             <ProjectComponent projects={props.projects} fetchProjectList={props.actions.fetchProjects}/>
 
-            <FloatingAddButton showAddProjectModal={props.actions.showAddProjectModal}/>
-
-            <AddProjectModalComponent projects={props.projects}
-                                      hideAddProjectModal={props.actions.hideAddProjectModal}
-                                      addProject={props.actions.addProject}
-                                      handleUpdateFormLocation={props.actions.handleUpdateFormLocation}/>
+            <FloatingAddButton addProject={props.actions.addProject}/>
         </div>
     );
 };

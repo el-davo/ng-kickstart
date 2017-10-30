@@ -1,5 +1,5 @@
 {
-  "name": "electron-typescript-react-boilerplate",
+  "name": "ng-kickstart",
   "version": "0.0.1",
   "description": "Electron boilerplate using typescript, react, react-material, redux and redux-saga",
   "main": "main.js",

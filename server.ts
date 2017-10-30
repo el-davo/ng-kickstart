@@ -12,8 +12,7 @@ new DevServer(webpack(config), {
     colors: true
   },
   watchOptions: {
-    aggregateTimeout: 300,
-    poll: true
+    aggregateTimeout: 300
   },
   inline: true
 }).listen(3000, 'localhost', (err) => {

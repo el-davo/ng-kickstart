@@ -1,16 +1,15 @@
 import {join} from 'path';
 import {ensureDir} from 'fs-extra';
 import {readFile, writeFile} from 'jsonfile';
+import {remote} from 'electron';
 import {Project} from './projects.state';
+import {homedir} from 'os';
 
-const homeDirectory = process.env[(process.platform === 'win32') ? 'USERPROFILE' : 'HOME'];
-const homeDir = join(homeDirectory, '.ng-kickstart');
+const homeDir = join(homedir(), '.ng-kickstart');
 const projectsFilePath = join(homeDir, 'projects.json');
 
 export function ensureSettingsDirectoryExists() {
-    return new Promise((resolve, reject) => {
-        ensureDir(homeDir, (err) => err ? reject(err) : resolve());
-    });
+    return ensureDir(homeDir);
 }
 
 export const fetchProjects = (): Promise<Project[]> => {
@@ -41,6 +40,14 @@ export function addProject(projects: Project[]) {
     return new Promise((resolve, reject) => {
         writeFile(projectsFilePath, projects, {spaces: 2}, (err) => {
             err ? reject(err) : resolve();
+        });
+    });
+}
+
+export function selectProjectDirectory() {
+    return new Promise((resolve, reject) => {
+        remote.dialog.showOpenDialog({properties: ['openDirectory']}, (filePath) => {
+            !!filePath && filePath.length > 0 ? resolve(filePath[0]) : reject();
         });
     });
 }
