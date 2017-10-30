@@ -1,2 +1,3 @@
-export const START_LINT = 'project/START_LINT';
-export const STOP_LINT = 'project/STOP_LINT';
+export const LINT_START = 'project/START_LINT';
+export const LINT_STOP = 'project/STOP_LINT';
+export const LINT_ERROR = 'project/LINT_ERROR';
