@@ -1,9 +1,10 @@
-import {Card, CardText} from 'material-ui/Card';
+import {Card, CardText, CardHeader} from 'material-ui/Card';
+import {Link} from 'react-router';
 import * as React from 'react';
-import {ProjectState} from '../projects.state';
+import {Project} from '../projects.state';
 
 interface Props {
-    project: ProjectState;
+    project: Project;
 }
 
 export class ProjectCardComponent extends React.Component<Props, any> {
@@ -14,10 +15,15 @@ export class ProjectCardComponent extends React.Component<Props, any> {
 
     render() {
         return (
-            <Card>
-                <CardText>
-                </CardText>
-            </Card>
+            <Link to={`/projects/${this.props.project.id}`}>
+                <Card>
+                    <CardHeader
+                        title={this.props.project.name}
+                    />
+                    <CardText>
+                    </CardText>
+                </Card>
+            </Link>
         );
     }
 }
