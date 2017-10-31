@@ -15,12 +15,12 @@ const store = configureStore.configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(
-  <MuiThemeProvider>
-    <Provider store={store}>
-      <div>
-        <Router history={history} routes={routes}/>
-      </div>
-    </Provider>
-  </MuiThemeProvider>,
-  document.getElementById('root')
+    <MuiThemeProvider>
+        <Provider store={store}>
+            <div>
+                <Router history={history} routes={routes}/>
+            </div>
+        </Provider>
+    </MuiThemeProvider>,
+    document.getElementById('root')
 );

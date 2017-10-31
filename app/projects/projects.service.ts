@@ -1,9 +1,9 @@
-import {join} from 'path';
+import {remote} from 'electron';
 import {ensureDir} from 'fs-extra';
 import {readFile, writeFile} from 'jsonfile';
-import {remote} from 'electron';
-import {Project} from './projects.state';
 import {homedir} from 'os';
+import {join} from 'path';
+import {Project} from './projects.state';
 
 const homeDir = join(homedir(), '.ng-kickstart');
 const projectsFilePath = join(homeDir, 'projects.json');

@@ -1,6 +1,6 @@
 import * as actions from './project.actions-types';
 
-export const lintStart = () => ({type: actions.LINT_START});
+export const lintStart = (projectId: string) => ({type: actions.LINT_START, projectId});
 
 export const lintStop = () => ({type: actions.LINT_STOP});
 

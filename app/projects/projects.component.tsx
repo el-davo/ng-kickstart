@@ -1,7 +1,7 @@
 import * as React from 'react';
-import {ProjectState} from './projects.state';
-import {Grid, Row, Col} from 'react-flexbox-grid/lib/index';
+import {Col, Grid, Row} from 'react-flexbox-grid/lib/index';
 import {ProjectCardComponent} from './card/project-card.component';
+import {ProjectState} from './projects.state';
 
 interface Props {
     projects: ProjectState;

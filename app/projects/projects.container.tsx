@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
+import {FloatingAddButton} from './add/floating-add-button';
 import * as actions from './projects.actions';
 import {ProjectsComponent} from './projects.component';
 import {ProjectState} from './projects.state';
-import {FloatingAddButton} from './add/floating-add-button';
 
 interface Props {
     projects: ProjectState;

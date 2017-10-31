@@ -1,24 +1,28 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import * as actions from './project.actions';
-import {ProjectComponent} from './project.component';
+import * as actions from '../project.actions';
+import {LintComponent} from './lint.component';
 
 interface Props {
     projectId: string;
+
+    actions: Actions;
+}
+
+interface Actions {
+    lintStart(projectId: string);
 }
 
 const ProjectContainer: React.StatelessComponent<Props> = (props) => {
     return (
-        <div>
-            <ProjectComponent projectId={props.projectId}/>
-        </div>
+        <LintComponent projectId={props.projectId} lintStart={props.actions.lintStart}/>
     );
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state, myProps) {
     return {
-        projectId: ownProps.params.id
+        projectId: myProps.projectId
     };
 }
 
