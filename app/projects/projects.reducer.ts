@@ -1,7 +1,7 @@
 import * as actions from './projects.action-types';
-import {ProjectState, projectState} from './projects.state';
+import {ProjectsState, projectState} from './projects.state';
 
-export const projectsReducer = (state: ProjectState = projectState, action): ProjectState => {
+export const projectsReducer = (state: ProjectsState = projectState, action): ProjectsState => {
     switch (action.type) {
         case actions.FETCH_PROJECTS:
             return {...state, isFetchingProjects: true};

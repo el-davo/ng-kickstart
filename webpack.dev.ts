@@ -6,44 +6,44 @@ const port = process.env.PORT || 3000;
 
 export const config = merge(baseConfig, {
 
-  devtool: 'cheap-module-eval-source-map',
+    devtool: 'cheap-module-eval-source-map',
 
-  entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    'index.tsx'
-  ],
+    entry: [
+        'webpack-dev-server/client?http://localhost:3000',
+        'webpack/hot/only-dev-server',
+        'index.tsx'
+    ],
 
-  output: {
-    publicPath: `http://localhost:${port}/dist/`
-  },
+    output: {
+        publicPath: `http://localhost:${port}/dist/`
+    },
 
-  module: {
-    rules: [
-      {
-        test: /\.global\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?sourceMap'
+    module: {
+        rules: [
+            {
+                test: /\.global\.css$/,
+                loaders: [
+                    'style-loader',
+                    'css-loader?sourceMap'
+                ]
+            },
+            {
+                test: /^((?!\.global).)*\.css$/,
+                loaders: [
+                    'style-loader',
+                    'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[local]'
+                ]
+            }
         ]
-      },
-      {
-        test: /^((?!\.global).)*\.css$/,
-        loaders: [
-          'style-loader',
-          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[local]'
-        ]
-      }
-    ]
-  },
+    },
 
-  plugins: [
-    new HotModuleReplacementPlugin(),
-    new NoEmitOnErrorsPlugin(),
-    new DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
-  ],
+    plugins: [
+        new HotModuleReplacementPlugin(),
+        new NoEmitOnErrorsPlugin(),
+        new DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify('development')
+        })
+    ],
 
-  target: 'electron-renderer'
+    target: 'electron-renderer'
 });

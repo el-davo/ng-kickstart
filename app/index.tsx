@@ -11,6 +11,7 @@ import {configureStore} from './store/configureStore';
 
 injectTapEventPlugin();
 
+
 const store = configureStore.configureStore();
 const history = syncHistoryWithStore(hashHistory, store);
 

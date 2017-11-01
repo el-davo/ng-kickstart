@@ -1,23 +1,30 @@
-import {Linter, Configuration} from 'tslint';
+import {eventChannel} from 'redux-saga';
+import {spawn} from 'child_process';
 import {Project} from '../../projects/projects.state';
-import {readFile} from 'fs';
-import {join} from 'path';
+import {lintFail, lintSuccess} from '../project.actions';
 
-export function getTslintFile(project: Project) {
-    return new Promise((resolve, reject) => {
-        readFile(join(project.location, '.tslintrc'), 'utf8', (err, file) => {
-            err ? reject(err) : resolve(file);
+export function startLint(project: Project) {
+    return eventChannel((emitter) => {
+
+        const child = spawn('ng', ['lint'], {cwd: project.location});
+
+        child.stdout.on('data', (data) => {
+
         });
-    });
-}
 
-export function startLint(project: Project, tslintConfig: any) {
-    return new Promise((resolve, reject) => {
-        //const linter = new Linter(tslintConfig);
-        //const configuration = Configuration.findConfiguration(tslintConfig, null).results;
+        child.stderr.on('data', (data) => {
 
-        //linter.lint(null, null, configuration);
+        });
 
-        //resolve(linter.getResult());
+        child.on('error', (data) => {
+
+        });
+
+        child.on('exit', (exitCode) => {
+            exitCode === 0 ? emitter(lintSuccess()) : emitter(lintFail());
+        });
+
+        return () => {
+        };
     });
 }

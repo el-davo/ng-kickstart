@@ -4,10 +4,10 @@ import {bindActionCreators} from 'redux';
 import {FloatingAddButton} from './add/floating-add-button';
 import * as actions from './projects.actions';
 import {ProjectsComponent} from './projects.component';
-import {ProjectState} from './projects.state';
+import {ProjectsState} from './projects.state';
 
 interface Props {
-    projects: ProjectState;
+    projects: ProjectsState;
     actions: Actions;
 }
 
