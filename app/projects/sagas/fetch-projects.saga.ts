@@ -8,13 +8,10 @@ function* fetch() {
     try {
         yield call(ensureSettingsDirectoryExists);
 
-        console.log('Hello got here');
-
         const todoList = yield call(fetchProjects);
 
         yield put(fetchProjectsSuccess(todoList));
     } catch (err) {
-        console.log(err);
         yield put(fetchProjectsFail());
     }
 }

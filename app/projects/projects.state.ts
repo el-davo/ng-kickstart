@@ -1,4 +1,4 @@
-export const projectState: ProjectState = {
+export const projectState: ProjectsState = {
     isFetchingProjects: false,
     isAddingProject: false,
     projects: {}
@@ -8,7 +8,7 @@ export interface ProjectWrapper {
     [key: string]: Project;
 }
 
-export interface ProjectState {
+export interface ProjectsState {
     isFetchingProjects: boolean;
     isAddingProject: boolean;
     projects: ProjectWrapper;

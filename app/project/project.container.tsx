@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {ProjectComponent} from './project.component';
 import * as actions from './project.actions';
+import {ProjectComponent} from './project.component';
 
 interface Props {
     projectId: string;
@@ -16,9 +16,9 @@ const ProjectContainer: React.StatelessComponent<Props> = (props) => {
     );
 };
 
-function mapStateToProps(state, myProps) {
+function mapStateToProps(state, ownProps) {
     return {
-        projectId: myProps.projectId
+        projectId: ownProps.params.id
     };
 }
 
